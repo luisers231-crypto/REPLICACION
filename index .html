@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traducción del ADN - WebApp Futurista Interactiva</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #0a0a0a;
+            color: #00ff00;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            background-color: #000;
+            color: #00ffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #00ffff;
+        }
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+        nav button {
+            margin: 10px;
+            background-color: #ff00ff;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        nav button:hover {
+            background-color: #00ffff;
+            box-shadow: 0 0 10px #00ffff;
+        }
+        section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #00ff00;
+            display: none; /* Ocultas por defecto */
+        }
+        h2, h3 {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+        .activity {
+            background-color: #333;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 5px solid #00ffff;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 5px #00ffff; }
+            to { box-shadow: 0 0 20px #00ffff; }
+        }
+        .hidden-content {
+            display: none;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 5px;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        button {
+            background-color: #ff00ff;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #00ffff;
+            box-shadow: 0 0 10px #00ffff;
+        }
+        #quiz {
+            margin-top: 40px;
+            display: none;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        #timer {
+            font-size: 24px;
+            color: #ff0000;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #00ffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Traducción del ADN - Edición Futurista</h1>
+        <p>Explora el proceso de traducción del ADN con interfaces interactivas, actividades y un quiz cronometrado. Navega con los botones.</p>
+    </header>
+
+    <nav>
+        <button onclick="showSection('intro')">Introducción</button>
+        <button onclick="showSection('estructura')">Estructura del ADN</button>
+        <button onclick="showSection('transcripcion')">Transcripción</button>
+        <button onclick="showSection('procesamiento')">Procesamiento del ARN</button>
+        <button onclick="showSection('traduccion')">Traducción</button>
+        <button onclick="showSection('quiz')">Quiz General</button>
+    </nav>
+
+    <section id="intro" style="display: block;">
+        <h2>Introducción al Proceso</h2>
+        <p>La traducción del ADN es el proceso donde la información genética se convierte en proteínas. Incluye estructura del ADN, transcripción, procesamiento de ARN y traducción. Cada tema tiene subtemas con 5 actividades interactivas.</p>
+    </section>
+
+    <!-- Tema 1: Estructura del ADN -->
+    <section id="estructura">
+        <h2>Estructura del ADN</h2>
+        <p>El ADN es una doble hélice con bases nitrogenadas (A, T, C, G).</p>
+        
+        <h3>Subtema 1: Componentes Básicos</h3>
+        <div class="activity">Actividad 1: Arrastra bases para formar pares (simulado: haz clic para revelar). <button onclick="toggleContent('est-comp1')">Iniciar</button><div id="est-comp1" class="hidden-content">A-T, C-G. ¡Correcto!</div></div>
+        <div class="activity">Actividad 2: Identifica nucleótidos. <button onclick="toggleContent('est-comp2')">Iniciar</button><div id="est-comp2" class="hidden-content">Azúcar + Fosfato + Base.</div></div>
+        <div class="activity">Actividad 3: Construye una cadena. <button onclick="toggleContent('est-comp3')">Iniciar</button><div id="est-comp3" class="hidden-content">Secuencia: ATGC.</div></div>
+        <div class="activity">Actividad 4: Compara ADN vs ARN. <button onclick="toggleContent('est-comp4')">Iniciar</button><div id="est-comp4" class="hidden-content">ADN: T, ARN: U.</div></div>
+        <div class="activity">Actividad 5: Explora mutaciones. <button onclick="toggleContent('est-comp5')">Iniciar</button><div id="est-comp5" class="hidden-content">Sustitución, inserción.</div></div>
+        
+        <h3>Subtema 2: Doble Hélice</h3>
+        <div class="activity">Actividad 1: Gira la hélice (simulado). <button onclick="toggleContent('est-hel1')">Iniciar</button><div id="est-hel1" class="hidden-content">Antiparalela.</div></div>
+        <div class="activity">Actividad 2: Une puentes de hidrógeno. <button onclick="toggleContent('est-hel2')">Iniciar</button><div id="est-hel2" class="hidden-content">2 en A-T, 3 en C-G.</div></div>
+        <div class="activity">Actividad 3: Replica ADN. <button onclick="toggleContent('est-hel3')">Iniciar</button><div id="est-hel3" class="hidden-content">Semiconservativa.</div></div>
+        <div class="activity">Actividad 4: Identifica enzimas. <button onclick="toggleContent('est-hel4')">Iniciar</button><div id="est-hel4" class="hidden-content">Helicasa, polimerasa.</div></div>
+        <div class="activity">Actividad 5: Simula replicación. <button onclick="toggleContent('est-hel5')">Iniciar</button><div id="est-hel5" class="hidden-content">Nueva cadena formada.</div></div>
+    </section>
+
+    <!-- Tema 2: Transcripción -->
+    <section id="transcripcion">
+        <h2>Transcripción</h2>
+        <p>El ADN se transcribe a ARNm en el núcleo.</p>
+        
+        <h3>Subtema 1: Iniciación</h3>
+        <div class="activity">Actividad 1: Une ARN polimerasa. <button onclick="toggleContent('trans-in1')">Iniciar</button><div id="trans-in1" class="hidden-content">Promotor TATA.</div></div>
+        <div class="activity">Actividad 2: Abre la hélice. <button onclick="toggleContent('trans-in2')">Iniciar</button><div id="trans-in2" class="hidden-content">Burbuja de transcripción.</div></div>
+        <div class="activity">Actividad 3: Identifica factores. <button onclick="toggleContent('trans-in3')">Iniciar</button><div id="trans-in3" class="hidden-content">TFIIB, TFIIH.</div></div>
+        <div class="activity">Actividad 4: Simula unión. <button onclick="toggleContent('trans-in4')">Iniciar</button><div id="trans-in4" class="hidden-content">Complejo formado.</div></div>
+        <div class="activity">Actividad 5: Explora reguladores. <button onclick="toggleContent('trans-in5')">Iniciar</button><div id="trans-in5" class="hidden-content">Enhancers.</div></div>
+        
+        <h3>Subtema 2: Elongación y Terminación</h3>
+        <div class="activity">Actividad 1: Agrega nucleótidos. <button onclick="toggleContent('trans-el1')">Iniciar</button><div id="trans-el1" class="hidden-content">5' a 3'.</div></div>
+        <div class="activity">Actividad 2: Lee codones. <button onclick="toggleContent('trans-el2')">Iniciar</button><div id="trans-el2" class="hidden-content">U en lugar de T.</div></div>
+        <div class="activity">Actividad 3: Simula terminación. <button onclick="toggleContent('trans-el3')">Iniciar</button><div id="trans-el3" class="hidden-content">Secuencia AAUAAA.</div></div>
+        <div class="activity">Actividad 4: Corrige errores. <button onclick="toggleContent('trans-el4')">Iniciar</button><div id="trans-el4" class="hidden-content">Proofreading.</div></div>
+        <div class="activity">Actividad 5: Explora velocidad. <button onclick="toggleContent('trans-el5')">Iniciar</button><div id="trans-el5" class="hidden-content">50 nt/seg.</div></div>
+    </section>
+
+    <!-- Tema 3: Procesamiento del ARN -->
+    <section id="procesamiento">
+        <h2>Procesamiento del ARN</h2>
+        <p>El pre-ARNm se modifica antes de salir del núcleo.</p>
+        
+        <h3>Subtema 1: Capping y Poly-A</h3>
+        <div class="activity">Actividad 1: Agrega cap 5'. <button onclick="toggleContent('proc-cap1')">Iniciar</button><div id="proc-cap1" class="hidden-content">7-metilguanosina.</div></div>
+        <div class="activity">Actividad 2: Añade cola poli-A. <button onclick="toggleContent('proc-cap2')">Iniciar</button><div id="proc-cap2" class="hidden-content">200 A's.</div></div>
+        <div class="activity">Actividad 3: Identifica enzimas. <button onclick="toggleContent('proc-cap3')">Iniciar</button><div id="proc-cap3" class="hidden-content">Poli-A polimerasa.</div></div>
+        <div class="activity">Actividad 4: Simula protección. <button onclick="toggleContent('proc-cap4')">Iniciar</button><div id="proc-cap4" class="hidden-content">Contra degradación.</div></div>
+        <div class="activity">Actividad 5: Explora funciones. <button onclick="toggleContent('proc-cap5')">Iniciar</button><div id="proc-cap5" class="hidden-content">Estabilidad ARNm.</div></div>
+        
+        <h3>Subtema 2: Splicing</h3>
+        <div class="activity">Actividad 1: Elimina intrones. <button onclick="toggleContent('proc-spl1')">Iniciar</button><div id="proc-spl1" class="hidden-content">Une exones.</div></div>
+        <div class="activity">Actividad 2: Identifica spliceosoma. <button onclick="toggleContent('proc-spl2')">Iniciar</button><div id="proc-spl2" class="hidden-content">snRNPs.</div></div>
+        <div class="activity">Actividad 3: Simula corte. <button onclick="toggleContent('proc-spl3')">Iniciar</button><div id="proc-spl3" class="hidden-content">GU-AG rule.</div></div>
+        <div class="activity">Actividad 4: Explora alternativo. <button onclick="toggleContent('proc-spl4')">Iniciar</button><div id="proc-spl4" class="hidden-content">Isoformas proteicas.</div></div>
+        <div class="activity">Actividad 5: Corrige errores. <button onclick="toggleContent('proc-spl5')">Iniciar</button><div id="proc-spl5" class="hidden-content">Mutaciones en splicing.</div></div>
+    </section>
+
+    <!-- Tema 4: Traducción -->
+    <section id="traduccion">
+        <h2>Traducción</h2>
+        <p>El ARNm se traduce a proteínas en ribosomas.</p>
+        
+        <h3>Subtema 1: Iniciación</h3>
+        <div class="activity">Actividad 1: Une subunidades. <button onclick="toggleContent('trad-in1')">Iniciar</button><div id="trad-in1" class="hidden-content">40S y 60S.</div></div>
+        <div class="activity">Actividad 2: Reconoce AUG. <button onclick="toggleContent('trad-in2')">Iniciar</button><div id="trad-in2" class="hidden-content">Codón start.</div></div>
+        <div class="activity">Actividad 3: Identifica tARN. <button onclick="toggleContent('trad-in3')">Iniciar</button><div id="trad-in3" class="hidden-content">Anticodón.</div></div>
+        <div class="activity">Actividad 4: Simula escaneo. <button onclick="toggleContent('trad-in4')">Iniciar</button><div id="trad-in4" class="hidden-content">Kozak sequence.</div></div>
+        <div class="activity">Actividad 5: Explora factores. <button onclick="toggleContent('trad-in5')">Iniciar</button><div id="trad-in5" class="hidden-content">eIFs.</div></div>
+        
+        <h3>Subtema 2: Elongación y Terminación</h3>
+        <div class="activity">Actividad 1: Forma enlaces peptídicos. <button onclick="toggleContent('trad-el1')">Iniciar</button><div id="trad-el1" class="hidden-content">Sitios A, P, E.</div></div>
+        <div class="activity">Actividad 2: Mueve ribosoma. <button onclick="toggleContent('trad-el2')">Iniciar</button><div id="trad-el2" class="hidden-content">Translocación.</div></div>
+        <div class="activity">Actividad 3: Identifica stop. <button onclick="toggleContent('trad-el3')">Iniciar</button><div id="trad-el3" class="hidden-content">UAA, UAG, UGA.</div></div>
+        <div class="activity">Actividad 4: Libera proteína. <button onclick="toggleContent('trad-el4')">Iniciar</button><div id="trad-el4" class="hidden-content">Factores de liberación.</div></div>
+        <div class="activity">Actividad 5: Explora post-traducción. <button onclick="toggleContent('trad-el5')">Iniciar</button><div id="trad-el5" class="hidden-content">Folding, modificaciones.</div></div>
+    </section>
+
+    <!-- Quiz General -->
+    <section id="quiz">
+        <h2>Quiz General (20 Preguntas)</h2>
+        <p>¡Prueba tus conocimientos! Tienes 10 minutos. Presiona "Iniciar Quiz" para comenzar.</p>
+        <button id="startQuiz">Iniciar Quiz</button>
+        <div id="timer">Tiempo restante: 10:00</div>
+        <form id="quizForm" style="display: none;">
+            <div class="question">
+                <p>1. ¿Qué bases forman el ADN?</p>
+                <label><input type="radio" name="q1" value="a"> A, T, C, G</label><br>
+                <label><input type="radio" name="q1" value="b"> A, U, C, G</label><br>
+                <label><input type="radio" name="q1" value="c"> A, T, C, U</label>
+            </div>
+            <div class="question">
+                <p>2. ¿El ADN es doble hélice?</p>
+                <label><input type="radio" name="q2" value="a"> Sí</label><br>
+                <label><input type="radio" name="q2" value="b"> No</label><br>
+                <label><input type="radio" name="q2" value="c"> Solo en procariotas</label>
+            </div>
+            <div class="question">
+                <p>3. ¿Qué enzima transcribe ADN a ARN?</p>
+                <label><input type="radio" name="q3" value="a"> ARN polimerasa</label><br>
+                <label><input type="radio" name="q3" value="b"> ADN polimerasa</label><br>
+                <label><input type="radio" name="q3" value="c"> Ligasa</label>
+            </div>
+            <div class="question">
+                <p>4. ¿Qué es el promotor?</p>
+                <label><input type="radio" name="q4" value="a"> Sitio de inicio de transcripción</label><br>
+                <label><input type="radio" name="q4" value="b"> Fin de transcripción</label><br>
+                <label><input type="radio" name="q4" value="c"> Mutación</label>
+            </div>
+            <div class="question">
+                <p>5. ¿Dirección de elongación en transcripción?</p>
+                <label><input type="radio" name="q5" value="a"> 5' a 3'</label><br>
+                <label><input type="radio" name="q5" value="b"> 3' a 5'</label><br>
+                <label><input type="radio" name="q5" value="c"> Ambas</label>
+            </div>
+            <div class="question">
+                <p>6. ¿Qué se añade al 5' del ARNm?</p>
+                <label><input type="radio" name="q6" value="a"> Cap</label><br>
+                <label><input type="radio" name="q6" value="b"> Cola poli-A</label><br>
+                <label><input type="radio" name="q6" value="c"> Intrones</label>
+            </div>
+            <div class="question">
+                <p>7. ¿Qué elimina el splicing?</p>
+                <label><input type="radio" name="q7" value="a"> Intrones</label><br>
+                <label><input type="radio" name="q7" value="b"> Exones</label><br>
+                <label><input type="radio" name="q7" value="c"> Promotores</label>
+            </div>
+            <div class="question">
+                <p>8. ¿Qué es el spliceosoma?</p>
+                <label><input type="radio" name="q8" value="a"> Complejo para splicing</label><br>
+                <label><input type="radio" name="q8" value="b"> Enzima de replicación</label><br>
+                <label><input type="radio" name="q8" value="c"> Ribosoma</label>
+            </div>
+            <div class="question">
+                <p>9. ¿Dónde ocurre la traducción?</p>
+                <label><input type="radio" name="q9" value="a"> Citoplasma</label><br>
+                <label><input type="radio" name="q9" value="b"> Núcleo</label><br>
+                <label><input type="radio" name="q9" value="c"> Mitocondria solo</label>
+            </div>
+            <div class="question">
+                <p>10. ¿Codón de inicio?</p>
+                <label><input type="radio" name="q10" value="a"> AUG</label><br>
+                <label><input type="radio" name="q10" value="b"> UAA</label><br>
+                <label><input type="radio" name="q10" value="c"> GUA</label>
+            </div>
+            <div class="question">
+                <p>11. ¿Qué lleva aminoácidos?</p>
+                <label><input type="radio" name="q11" value="a"> tARN</label><br>
+                <label><input type="radio" name="q11" value="b"> ARNm</label><br>
+                <label><input type="radio" name="q11" value="c"> rARN</label>
+            </div>
+            <div class="question">
+                <p>12. ¿Sitios en ribosoma?</p>
+                <label><input type="radio" name="q12" value="a"> A, P, E</label><br>
+                <label><input type="radio" name="q12" value="b"> X, Y, Z</label><br>
+                <label><input type="radio" name="q12" value="c"> 1, 2, 3</label>
+            </div>
+            <div class="question">
+                <p>13. ¿Codones de stop?</p>
+                <label><input type="radio" name="q13" value="a"> UAA, UAG, UGA</label><br>
+                <label><input type="radio" name="q13" value="b"> AUG, GUA, CUA</label><br>
+                <label><input type="radio" name="q13" value="c"> AAA, AAG, AGA</label>
+            </div>
+            <div class="question">
+                <p>14. ¿Qué es el código genético?</p>
+                <label><input type="radio" name="q14" value="a"> Universal</label><br>
+                <label><input type="radio" name="q14" value="b"> Variable</label><br>
+                <label><input type="radio" name="q14" value="c"> Solo en eucariotas</label>
+            </div>
+            <div class="question">
+                <p>15. ¿Número de codones?</p>
+                <label><input type="radio" name="q15" value="a"> 64</label><br>
+                <label><input type="radio" name="q15" value="b"> 20</label><br>
+                <label><input type="radio" name="q15" value="c"> 4</label>
+            </div>
+            <div class="question">
+                <p>16. ¿Aminoácidos codificados?</p>
+                <label><input type="radio" name="q16" value="a"> 20</label><br>
+                <label><input type="radio" name="q16" value="b"> 64</label><br>
+                <label><input type="radio" name="q16" value="c"> 4</label>
+            </div>
+            <div class="question">
+                <p>17. ¿Qué es un marco de lectura?</p>
+                <label><input type="radio" name="q17" value="a"> Secuencia de codones</label><br>
+                <label><input type="radio" name="q17" value="b"> Mutación</label><br>
+                <label><input type="radio" name="q17" value="c"> Enzima</label>
+            </div>
+            <div class="question">
+                <p>18. ¿El ARNm es monocistrónico en eucariotas?</p>
+                <label><input type="radio" name="q18" value="a"> Sí</label><br>
+                <label><input type="radio" name="q18" value="b"> No</label><br>
+                <label><input type="radio" name="q18" value="c"> Siempre policistrónico</label>
+            </div>
+            <div class="question">
+                <p>19. ¿Qué es la degeneración del código?</p>
+                <label><input type="radio" name="q19" value="a"> Múltiples codones por aminoácido</label><br>
+                <label><input type="radio" name="q19" value="b"> Un codón por aminoácido</label><br>
+                <label><input type="radio" name="q19" value="c"> Errores en traducción</label>
+            </div>
+            <div class="question">
+                <p>20. ¿Dónde se pliega la proteína?</p>
+                <label><input type="radio" name="q20" value="a"> Post-traducción</label><br>
+                <label><input type="radio" name="q20" value="b"> Durante transcripción</label><br>
+                <label><input type="radio" name="q20" value="c"> En el núcleo</label>
+            </div>
+            <button type="button" onclick="checkQuiz()">Enviar Quiz</button>
+        </form>
+        <div id="result"></div>
+    </section>
+
+    <script>
+        function showSection(id) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(sec => sec.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+
+        let timerInterval;
+        let timeLeft = 600; // 10 minutos
+
+        document.getElementById('startQuiz').addEventListener('click', function() {
+            this.style.display = 'none';
+            document.getElementById('quizForm').style.display = 'block';
+            startTimer();
+        });
+
+        function startTimer() {
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    checkQuiz();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').innerText = `Tiempo restante: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        function checkQuiz() {
+            clearInterval(timerInterval);
+            const answers = {
+                q1: 'a', q2: 'a', q3: 'a', q4: 'a', q5: 'a',
+                q6: 'a', q7: 'a', q8: 'a', q9: 'a', q10: 'a',
+                q11: 'a', q12: 'a', q13: 'a', q14: 'a', q15: 'a',
+                q16: 'a', q17: 'a', q18: 'a', q19: 'a', q20: 'a'
+            };
+            let score = 0;
+            const form = document.getElementById('quizForm');
+            for (let i = 1; i <= 20; i++) {
+                const selected = form.querySelector(`input[name="q${i}"]:checked`);
+                if (selected && selected.value === answers[`q${i}`]) {
+                    score++;
+                }
+            }
+            document.getElementById('result').innerText = `Tu puntuación: ${score}/20. ¡Explora más el código genético futurista!`;
+            form.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
